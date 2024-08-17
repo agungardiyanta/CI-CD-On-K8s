@@ -1,0 +1,14 @@
+name: "CheckMyIP Deployment"
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'CheckMySite/*'
+
+jobs:
+  build-and-deployment:
+    uses: ./.github/workflows/build-deployment.yaml
+    secrets: inherit
+    with:
+      app-name: check-my-site
