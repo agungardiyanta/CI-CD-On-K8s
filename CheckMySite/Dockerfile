@@ -1,4 +1,3 @@
-#Check My Site
 FROM node:20.0-alpine as build
 WORKDIR /app
 
