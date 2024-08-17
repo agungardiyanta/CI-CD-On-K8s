@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Status</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .status-container {
+            display: flex;
+            align-items: center;
+            border: 2px solid #000;
+            padding: 20px;
+            background-color: #fff;
+        }
+        .status-container .status-down {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 10px;
+            background-color: red;
+        }
+        .status-container .status-up {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 10px;
+            background-color: green;
+        }
+        .status-container .message {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-container">
+        
+    <% if (status) { %>
+        <div class="status-up"></div>
+        <div class="message">The site <%= domain %> is up!</div>
+    <% } else { %>
+        <div class="status-down"></div>
+        <div class="message">The site <%= domain %> is down!</div>
+    <% } %>
+    </div>
+    
+</body>
+</html>
