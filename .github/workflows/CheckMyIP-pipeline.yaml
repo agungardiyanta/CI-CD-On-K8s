@@ -13,3 +13,4 @@ jobs:
     secrets: inherit
     with:
       app-name: "check-my-ip"
+      context: "./CheckMyIP"

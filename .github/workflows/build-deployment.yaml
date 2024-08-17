@@ -5,6 +5,12 @@ on:
       app-name:
         required: true
         type: string
+      wd: 
+        required: true
+        type: string
+      context:
+        required: true
+        type: string
 
 jobs:
   build:
@@ -21,5 +27,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
+          context: ${{ inputs.context }}
           push: true
-          tags: distucker/${{ app-name }}:${{ github.sha }}
+          tags: distucker/${{ inputs.app-name }}:${{ github.sha }}
+                    
+

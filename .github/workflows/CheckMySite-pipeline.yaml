@@ -1,4 +1,4 @@
-name: "CheckMyIP Deployment"
+name: "CheckMySite Deployment"
 on:
   push:
     branches:
@@ -13,3 +13,4 @@ jobs:
     secrets: inherit
     with:
       app-name: "check-my-site"
+      context: "./CheckMySite"
