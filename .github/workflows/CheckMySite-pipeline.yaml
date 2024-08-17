@@ -5,6 +5,7 @@ on:
       - main
     paths:
       - 'CheckMySite/*'
+  workflow_dispatch:
 
 jobs:
   build-and-deployment:

@@ -5,6 +5,7 @@ on:
       - main
     paths:
       - 'CheckMyIP/*'
+  workflow_dispatch:
 
 jobs:
   build-and-deployment:
