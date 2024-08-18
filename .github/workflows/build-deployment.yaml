@@ -40,13 +40,20 @@ jobs:
         uses: google-github-actions/auth@v1
         with:
           credentials_json: ${{ secrets.GCP_CREDENTIALS }}
-
-      - name: Deploy to GKE
-        uses: google-github-actions/deploy-gke@v0.0.1
+      - name: get-gke-credentials
+        uses: 'google-github-actions/get-gke-credentials@v2'
         with:
           cluster_name: ${{ secrets.GKE_CLUSTER_NAME }}
           location: ${{ secrets.GKE_CLUSTER_LOCATION }}
-          manifests: ./deployment/${{ inputs.app-name }}-deployment.yaml
+
+      - name: Set up GKE kubectl
+        uses: google-github-actions/get-gke-credentials@v1
+        with:
+          cluster_name: ${{ secrets.GKE_CLUSTER_NAME }}
+          location: ${{ secrets.GKE_CLUSTER_LOCATION }}
           project_id: ${{ secrets.GCP_PROJECT_ID }}
+
+      - name: Deploy to GKE
+        run: kubectl apply -f ./deployment/${{inputs.app-name}}-deployment.yaml
         env:
           IMAGE: distucker/${{ inputs.app-name }}:${{ github.sha }}
