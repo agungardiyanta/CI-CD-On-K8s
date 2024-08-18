@@ -1,14 +1,14 @@
 # CI-CD-On-K8s
 
-* __CheckMySite__
+* [__CheckMySite__](https://dsandbox.online/checkmysite/google.com)
 This service checks if a domain is up or down by sending an HTTP request. Access it via:
 ```
-http://url/checkmysite/{domain}
+https://dsandbox.online/checkmysite/{domain}
 ```
-* __CheckMyIP__
+* [__CheckMyIP__](https://dsandbox.online/checkmyip)
 This service detects the IP address of the client making the request. Access it via:
 ```
-http://url/checkmyip/
+https://dsandbox.online/checkmyip/
 ```
 
 ### CI/CD Flow
