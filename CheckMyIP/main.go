@@ -54,7 +54,7 @@ func ipHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	http.HandleFunc("/", ipHandler)
+	http.HandleFunc("/ip", ipHandler)
 
 	fmt.Println("Server is running on http://localhost:8080")
 	http.ListenAndServe(":8080", nil)
