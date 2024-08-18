@@ -54,6 +54,4 @@ jobs:
           project_id: ${{ secrets.GCP_PROJECT_ID }}
 
       - name: Update Image tags
-        run: sed "s|distucker/${{inputs.app-name}}:image-tag|distucker/${{inputs.app-name}}:${{github.sha}}|" ./deployment/${{inputs.app-name}}-deployment.yaml 
-      - name: Deploy to GKE
-        run: kubectl apply -f ./deployment/${{inputs.app-name}}-deployment.yaml
+        run: sed "s|distucker/${{inputs.app-name}}:image-tag|distucker/${{inputs.app-name}}:${{github.sha}}|" ./deployment/${{inputs.app-name}}-deployment.yaml | kubectl apply -f -
