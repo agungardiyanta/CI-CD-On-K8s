@@ -23,7 +23,7 @@ async function checkSite(url) {
 }
 
 // Route to check the site status
-app.get('/site/:domain', async (req, res) => {
+app.get('site/:domain', async (req, res) => {
     const domain = req.params.domain;
     const url = `http://${domain}`;
 

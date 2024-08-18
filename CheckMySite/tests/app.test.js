@@ -4,7 +4,7 @@ import fetch from 'node-fetch';
 import request from 'supertest';
 import app from '../app.js'; // Import the Express app
 
-describe('GET /site/:domain', function() {
+describe('GET site/:domain', function() {
     let fetchStub;
 
     // Before each test, stub the fetch function
