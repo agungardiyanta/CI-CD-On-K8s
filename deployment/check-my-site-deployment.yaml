@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: check-my-site
+  labels:
+    app: check-my-site
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: check-my-site
+  template:
+    metadata:
+      labels:
+        app: check-my-site
+    spec:
+      containers:
+        - name: check-my-site
+          image: distucker/check-my-site:image-tag  
+          resources:
+            requests:
+              memory: "100Mi"
+              cpu: "100m"
+            limits:
+              memory: "200Mi"
+              cpu: "200m"
+          ports:
+            - containerPort: 3000
+          readinessProbe:
+            tcpSocket:
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 15

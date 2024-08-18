@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: check-my-ip
+  labels:
+    app: check-my-ip
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: check-my-ip
+  template:
+    metadata:
+      labels:
+        app: check-my-ip
+    spec:
+      containers:
+        - name: check-my-ip
+          image: distucker/check-my-ip:image-tag  
+          resources:
+            requests:
+              memory: "100Mi"
+              cpu: "100m"
+            limits:
+              memory: "200Mi"
+              cpu: "200m"
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 15

@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: check-my-ip-svc
+spec:
+  type: ClusterIP # The service only can be accessed from internal
+  selector:
+    app: check-my-ip
+  ports:
+    - port: 8080

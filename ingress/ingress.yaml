@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: default
+  name: my-ingress
+  annotations:
+spec:
+  ingressClassName: nginx
+  rules:
+    - http: 
+        paths:
+
+          - path: /checkmyip/(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: check-my-ip-svc
+                port:
+                  number: 80
+          - path: /checkmysite/(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: check-my-site-svc
+                port:
+                  number: 80
