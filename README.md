@@ -5,7 +5,7 @@ This service checks if a domain is up or down by sending an HTTP request. Access
 ```
 https://dsandbox.online/checkmysite/{domain}
 ```
-* [__CheckMyIP__](https://dsandbox.online/checkmyip)
+* [__CheckMyIP__](https://dsandbox.online/checkmyip/)
 This service detects the IP address of the client making the request. Access it via:
 ```
 https://dsandbox.online/checkmyip/
