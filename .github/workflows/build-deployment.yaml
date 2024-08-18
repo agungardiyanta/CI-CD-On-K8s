@@ -26,7 +26,7 @@ jobs:
         with:
           context: ${{ inputs.context }}
           push: true
-          tags: distucker/${{ inputs.app-name }}:${{ github.sha }}
+          tags: distucker/${{ inputs.app-name }}:$GITHUB_SHA
   deploy:
     name: Deploy  App to GKE
     runs-on: ubuntu-latest
@@ -46,4 +46,4 @@ jobs:
           manifests: ./deployment/${{ inputs.app-name }}-deployment.yaml
           project_id: ${{ secrets.GCP_PROJECT_ID }}
         env:
-          IMAGE: distucker/${{ inputs.app-name }}:${{ github-sha }}
+          IMAGE: distucker/${{ inputs.app-name }}:$GITHUB_SHA
