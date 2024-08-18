@@ -1,4 +1,3 @@
-#Golang Check IP
 FROM golang:1.22-alpine as build
 WORKDIR /app
 
