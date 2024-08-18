@@ -6,9 +6,14 @@ metadata:
   annotations:
       nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
+  tls:
+    - hosts:
+        - 'dsandbox.online'
+      secretName: tls-secret
   ingressClassName: nginx
   rules:
-    - http: 
+    - host: dsandbox.online
+      http: 
         paths:
           - path: /checkmyip/(.*)
             pathType: ImplementationSpecific
