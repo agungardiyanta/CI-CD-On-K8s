@@ -1,4 +1,4 @@
-name: "build and deployment"
+name: "build-deploy"
 on:
   workflow_call:
     inputs:
@@ -14,7 +14,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: checkout
+        uses: actions/checkout@v4
 
       - name: Login to Docker Hub
         uses: docker/login-action@v2
@@ -33,13 +34,15 @@ jobs:
     needs: build
 
     steps:
+      - name: checkout
+        uses: actions/checkout@v4
       - name: Authenticate with GCP
         uses: google-github-actions/auth@v1
         with:
           credentials_json: ${{ secrets.GCP_CREDENTIALS }}
 
       - name: Deploy to GKE
-        uses: google-github-actions/deploy-gke@v0.10.0
+        uses: google-github-actions/deploy-gke@v0.0.1
         with:
           cluster_name: ${{ secrets.GKE_CLUSTER_NAME }}
           location: ${{ secrets.GKE_CLUSTER_LOCATION }}
