@@ -27,5 +27,23 @@ jobs:
           context: ${{ inputs.context }}
           push: true
           tags: distucker/${{ inputs.app-name }}:${{ github.sha }}
-                    
+  deploy:
+    name: Deploy  App to GKE
+    runs-on: ubuntu-latest
+    needs: build
 
+    steps:
+      - name: Authenticate with GCP
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GCP_CREDENTIALS }}
+
+      - name: Deploy to GKE
+        uses: google-github-actions/deploy-gke@v0.10.0
+        with:
+          cluster_name: ${{ secrets.GKE_CLUSTER_NAME }}
+          location: ${{ secrets.GKE_CLUSTER_LOCATION }}
+          manifests: ./deployment/${{ inputs.app-name }}-deployment.yaml
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+        env:
+          IMAGE: distucker/${{ inputs.app-name }}:${{ github-sha }}
